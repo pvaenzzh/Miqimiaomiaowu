@@ -1,0 +1,36 @@
+server:
+  port: 31158
+  tomcat:
+    uri-encoding: UTF-8
+  servlet:
+    context-path: /pvaen
+spring:
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 100MB
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force:  true
+  datasource:
+    url: jdbc:h2:D:\work\default\sqldb\h2\db\db1
+#    url: jdbc:h2:mem:db1
+    driver-class-name: org.h2.Driver
+    username: pvaen1
+    password: pvaen1
+  jpa:
+    database: h2
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  h2:
+    console:
+      path: /h2-console
+      enabled: true
+      
+pvaen:
+  engineInfos:
+    - {id: 1, portol: http, url: localhost, port: 9000, account: minioadmin, passWord: minioadmin}
+    
