@@ -1,6 +1,6 @@
 package com.pvaen.fileservice.engine;
 
-import com.pvaen.fileservice.config.EngineInfo;
+import com.pvaen.fileservice.config.engine.EngineInfo;
 import com.pvaen.fileservice.excption.MinioException;
 import com.pvaen.fileservice.model.po.TFileInfo;
 import com.pvaen.fileservice.model.result.EngineDownloadResult;

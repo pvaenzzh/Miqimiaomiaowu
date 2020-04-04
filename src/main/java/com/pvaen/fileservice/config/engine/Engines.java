@@ -9,12 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
 import com.pvaen.fileservice.Enum.EngineEnum;
-import com.pvaen.fileservice.config.EngineInfo;
-import com.pvaen.fileservice.config.EngineInfoConfig;
 import com.pvaen.fileservice.engine.CommonEngine;
 import com.pvaen.fileservice.engine.MinioEngine;
 
-
+/**
+ * 将配置文件的引擎配置类加载到map中保存, 可注入使用</br>
+ * @author pvaen
+ *
+ */
 @Configuration
 public class Engines {
 	

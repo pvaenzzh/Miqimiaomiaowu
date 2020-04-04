@@ -1,8 +1,14 @@
-package com.pvaen.fileservice.config;
+package com.pvaen.fileservice.config.engine;
 
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * 引擎的基础属性类</br>
+ * 可继承 扩充属性
+ * @author pvaen
+ *
+ */
 @Setter
 @Getter
 public class EngineInfo {

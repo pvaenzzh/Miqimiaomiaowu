@@ -5,11 +5,13 @@ import java.io.InputStream;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
 import org.xmlpull.v1.XmlPullParserException;
 
-import com.pvaen.fileservice.config.EngineInfo;
+import com.pvaen.fileservice.config.engine.EngineInfo;
 import com.pvaen.fileservice.excption.MinioException;
 import com.pvaen.fileservice.model.po.TFileInfo;
 import com.pvaen.fileservice.model.result.EngineDownloadResult;
@@ -30,6 +32,8 @@ import io.minio.errors.RegionConflictException;
 
 public class MinioEngine extends CommonEngine{
 
+    private static final Logger logger = LoggerFactory.getLogger(MinioEngine.class);
+    
 	private static final String BUCKETNAME = "pvaen01";
 	
 	private EngineInfo config;
@@ -41,6 +45,7 @@ public class MinioEngine extends CommonEngine{
 	
 	@Override
 	public void init(EngineInfo engineInfo) {
+	    
 		this.config = engineInfo;
 		try {
 			this.client = getMinioClient();

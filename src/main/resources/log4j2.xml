@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info" monitorInterval="5"> 
+    <properties>
+        <property name="FILE_NAME">mylog</property>
+        <property name="log.sql.level">info</property>
+    </properties>
+ 
+ 
+    <Appenders>  
+    
+        <Console name="Console" target="SYSTEM_OUT">  
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} %l[%t] - %m%n" />
+<!-- %c 输出日志信息所属的类的全名
+%d 输出日志时间点的日期或时间，默认格式为ISO8601，也可以在其后指定格式，比如：%d{yyy-MM-dd HH:mm:ss }，输出类似：2002-10-18- 22：10：28
+%f 输出日志信息所属的类的类名
+%l 输出日志事件的发生位置，即输出日志信息的语句处于它所在的类的第几行
+%m 输出代码中指定的信息，如log(message)中的message
+%n 输出一个回车换行符，Windows平台为“rn”，Unix平台为“n”
+%p 输出优先级，即DEBUG，INFO，WARN，ERROR，FATAL。如果是调用debug()输出的，则为DEBUG，依此类推
+%r 输出自应用启动到输出该日志信息所耗费的毫秒数
+%t 输出产生该日志事件的线程名 -->
+        </Console>
+ 
+        <RollingRandomAccessFile name="randomFile" fileName="logs/fileservice.log" filePattern="logs/$${date:yyyy-MM}/fileservice-%d{yyyy-MM-dd HH-mm}-%i.log">
+        
+        	<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %l - %msg%n"/>
+        	
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1"/>
+                <SizeBasedTriggeringPolicy size="10 MB"/>
+            </Policies>
+            
+        	<DefaultRolloverStrategy max="20"/>
+        	
+        </RollingRandomAccessFile>
+    </Appenders>  
+ 
+    <Loggers>  
+        <Root level="info">  
+            <AppenderRef ref="Console" />  
+            <AppenderRef ref="randomFile" />
+        </Root>
+ 
+        <Logger name="dev" level="info" additivity="false">
+             <!-- <AppenderRef ref="randomFile" /> -->
+             <AppenderRef ref="Console" />
+             <AppenderRef ref="randomFile" />
+        </Logger>
+        
+    </Loggers>  
+</Configuration>
+
+<!-- <Configuration status="INFO">
+	  <Appenders>
+		    <Console name="Console" target="SYSTEM_OUT">
+		      	<PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss,SSS} %5p %c{1}:%L - %m%n"/>
+		    </Console>
+	  </Appenders>
+	  <Loggers>
+	   	<Root level="info">
+	      <AppenderRef ref="Console"/>
+	    </Root>
+	  </Loggers>
+</Configuration> -->
